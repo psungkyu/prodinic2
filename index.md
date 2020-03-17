@@ -66,7 +66,7 @@ int main() {
 | 번호          | 문제풀이                                     | 코드 | 관련 기술 정리 |
 |:-------------|:---------------------------------------|:----|
 | 9376번        | [탈옥](./problems/1091)            |
-| 1194번        | [달이 차오른다, 가자.](./problems/3678)         | |[유니온파인드](./technique/Disjointset), 이분탐색 |
+| 1194번        | [달이 차오른다, 가자.](./problems/3678)         | |[유니온파인드](./technique/Disjointset), 이분탐색, 연습 |
 | 3197번        | [백조의 호수](./problems/3425)               |
 | 13460번        | [구슬 탈출 2](./problems/1043)              |
 |3055번|[탈출](./problems/3055)|[![github_icon](./github_icon.png)](https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3055.cpp)|[BFS](./technique/BFS), [시뮬레이션](./technique/Simulation)|

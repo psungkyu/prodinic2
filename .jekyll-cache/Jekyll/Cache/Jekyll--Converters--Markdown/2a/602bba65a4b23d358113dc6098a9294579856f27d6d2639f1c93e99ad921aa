@@ -1,0 +1,146 @@
+I"\<h2 id="문제해설">문제해설</h2>
+
+<p><a href="https://www.acmicpc.net/problem/3055">문제</a>의 정의에 의하면 <strong>S에서 D로 가는 최단 거리</strong>를 구하는 것이 목표입니다.</p>
+
+<p>지도는 R행 C열로 이루어져 있습니다. 비어있는 곳은 ‘.’로 표시되어 있고, 물이 차있는 지역은 ‘*’, 돌은 ‘X’로 표시되어 있습니다.</p>
+
+<p>매 분마다 고슴도치는 현재 있는 칸과 인접한 네 칸 중 하나로 이동할 수 있습니다. (위, 아래, 오른쪽, 왼쪽) 물도 매 분마다 비어있는 칸으로 확장됩니다. 물이 있는 칸과 인접해있는 비어있는 칸(적어도 한 변을 공유)은 물이 차게 됩니다.</p>
+
+<blockquote>
+  <p>제한 조건</p>
+  <ul>
+    <li>고슴도치는 물과 돌을 통과할 수 없다.</li>
+    <li>물은 비버의 소굴로 이동할 수 없다.</li>
+    <li>고슴도치는 1분 뒤에 물이 찰 예정인 칸으로 이동할 수 없다.</li>
+  </ul>
+</blockquote>
+
+<h2 id="아이디어">아이디어</h2>
+
+<p>우선순위 큐를 이용한 두 번의 BFS를 구현하여 문제를 풀었습니다. 지도 한 변의 크기는 최대 50입니다. 인접행렬로 구현하였으므로 <strong><em>시간 복잡도는 O(V^2)</em></strong>입니다. 
+BFS를 이용하여 완전탐색 한 후, 고슴도치가 D까지 갈 수 있는 지 탐색합니다. 도달할 수 있으면 최단 거리를 출력하고, 그렇지 않으면 -1을 출력합니다.</p>
+
+<h2 id="알고리즘">알고리즘</h2>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#define MAX_LEN 52
+#define info pair&lt;int, pair&lt;int, int &gt; &gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span> 
+
+<span class="kt">char</span> <span class="n">map</span><span class="p">[</span><span class="n">MAX_LEN</span><span class="p">][</span><span class="n">MAX_LEN</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">visited</span><span class="p">[</span><span class="n">MAX_LEN</span><span class="p">][</span><span class="n">MAX_LEN</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">expected</span><span class="p">[</span><span class="n">MAX_LEN</span><span class="p">][</span><span class="n">MAX_LEN</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="p">};</span> 
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">info</span><span class="o">&gt;</span> <span class="n">loc</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">R</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">answer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">info</span> <span class="n">destination</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">dx</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">},</span> <span class="n">dy</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">simulation</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 입력 : x</span>
+    <span class="c1">// 출력 : x</span>
+    <span class="c1">// 설명 : n분 뒤에 물이 찰 지역에 n + 1을 저장하는 함수입니다.(0을 방문하지 않았다는 의미로 사용하기 위해 1을 더해주었습니다.)</span>
+
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">info</span><span class="o">&gt;</span> <span class="n">pq</span><span class="p">;</span>
+
+    <span class="c1">// 초기화 - 처음 물이 있던 자리 모두 우선순위 큐에 push합니다.</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">loc</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">step</span> <span class="o">=</span> <span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">first</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">// 시작 지점에 1을 저장합니다.    </span>
+
+        <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="o">-</span><span class="n">step</span><span class="p">,</span> <span class="n">make_pair</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)));</span>
+        <span class="n">expected</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">step</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">pq</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">second</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">second</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">step</span> <span class="o">=</span> <span class="o">-</span><span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">first</span><span class="p">;</span> <span class="c1">// 매번 해당 지점의 최단 거리를 가져오기 위해 Max heap에 -1을 곱하여 저장하였습니다.</span>
+        <span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            
+            <span class="k">if</span> <span class="p">(</span><span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="n">R</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="n">C</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>   <span class="c1">// 범위가 벗어났을 경우, continue</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">expected</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span> <span class="c1">// 이미 방문한 노드일 경우, continue</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'D'</span> <span class="o">||</span> <span class="n">map</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'X'</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span> <span class="c1">// 돌이나 비버의 집을 만났을 경우, continue</span>
+
+            <span class="n">expected</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">make_pair</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">info</span> <span class="n">start</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">pq</span><span class="p">;</span>
+    <span class="n">visited</span><span class="p">[</span><span class="n">start</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">first</span><span class="p">][</span><span class="n">start</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">second</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">start</span><span class="p">);</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">pq</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">second</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">second</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">step</span> <span class="o">=</span> <span class="o">-</span><span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">first</span><span class="p">;</span>
+        <span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'D'</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="n">step</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> 
+            <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">nx</span> <span class="o">&gt;=</span> <span class="n">R</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&gt;=</span> <span class="n">C</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>   <span class="c1">// 범위를 벗어났을 경우, continue</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'*'</span> <span class="o">||</span> <span class="n">map</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'X'</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span> <span class="c1">// 물이나 돌을 만난 경우, continue</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">visited</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">])</span> <span class="k">continue</span><span class="p">;</span>  <span class="c1">// 이미 방문한 경우, continue</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">expected</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">expected</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="k">continue</span><span class="p">;</span>  <span class="c1">// 이미 물로 차 있거나 1분 뒤에 차 있을 예정인 경우, continue </span>
+            
+            <span class="c1">// 방문하고, 우선순위 큐에 push</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">make_pair</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">R</span> <span class="o">&gt;&gt;</span> <span class="n">C</span><span class="p">;</span>
+    <span class="n">info</span> <span class="n">start</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">C</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span> 
+            <span class="k">if</span> <span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'S'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">start</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> 
+                <span class="n">start</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">second</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+                <span class="n">start</span><span class="p">.</span><span class="n">first</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'D'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">destination</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">first</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+                <span class="n">destination</span><span class="p">.</span><span class="n">second</span><span class="p">.</span><span class="n">second</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+                <span class="n">destination</span><span class="p">.</span><span class="n">first</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'*'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">loc</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">make_pair</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">simulation</span><span class="p">();</span>
+    <span class="n">bfs</span><span class="p">(</span><span class="n">start</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">answer</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"KAKTUS"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">else</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">answer</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="수학적인-증명">수학적인 증명</h2>
+
+<p><a href="../">목록</a></p>
+:ET

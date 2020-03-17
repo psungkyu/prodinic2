@@ -1,8 +1,26 @@
-title: Problem Solving Blog
-description: 알고리즘 문제를 풀고 기록합니다. 관련된 기술을 정리하고 최적화 과정을 다룹니다.
-show_downloads: true
-google_analytics:
 theme: jekyll-theme-cayman
-email: 'seonggyu.park.seoul@gmail.com'
-github_username: prodinic
-author: seonggyu.park.seoul@gmail.com
+
+title                    : "Problem Solving Blog"
+name                     : "달리기와 책 읽기를 좋아하는 소프트웨어 엔지니어"
+description              : "알고리즘 문제를 풀고 기록합니다. 관련된 기술을 정리하고 최적화 과정을 다룹니다."
+url                      : "https://prodinic.github.io"
+baseurl                  : # 서브 경로가 있는 경우 기재
+
+
+
+
+
+
+# Site Footer
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/prodinic"
+
+
+# Outputting
+permalink: /:categories/:title/
+paginate: 5 # 첫 페이지에보여줄 최근 게시물 수를 지정
+paginate_path: /page:num/
+timezone: Asia/Seoul # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones

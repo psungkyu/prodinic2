@@ -1,123 +1,89 @@
 ---
 layout: default
+title: Problem Solving Blog
+description: 알고리즘 문제를 풀고 기록합니다. 관련된 기술을 정리하고 최적화 과정을 다룹니다.
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+## 블로그의 목적
+> 취업에 필요한 알고리즘 문제 풀이를 체계적으로 공부하고자 이 블로그를 개설하였습니다. 나아가 좋은 엔지니어가 되기 위해 알고리즘 풀이와 관련된 코딩 기술을 정리하기로 합니다.
 
-[Link to another page](./another-page.html).
+<!-- ![Octocat](./ProblemSolving.png) -->
+* * *
+## 작성된 코드는 아래의 특징을 지닙니다. 
+* 대부분의 코드는 **C++**로 작성하였습니다. 
+* 많은 문자열을 처리해야 하는 경우, **Python**을 이용하여 문제를 풀었습니다.
+* **C++**의 **STL (*Standard Template Library*)**을 사용하였습니다.
+* 주로 사용된 라이브러리는 ***vector, queue*** 그리고 ***algorithm*** 등이 있습니다.
 
-There should be whitespace between paragraphs.
+```c++
+// This example written in C++ has some libraries 
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+using namespace std;
 
-# Header 1
+int main() {
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
-
-## Header 2
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
-### Header 3
-
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
+  cout << "hello world!" << endl;
+  return 0;
 }
 ```
+* * *
+## Week 1 [*2020.02.10. - 2020.02.15.*]
+1. [1091번: 카드 섞기](./problems/1091)
+1.
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
+* * *
+## Week 2 [*2020.02.17. - 2020.02.22.*]
 
-#### Header 4
+* * *
+## Week 3 [*2020.02.24. - 2020.03.01.*]
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
+| 번호          | 문제풀이                                | 코드 | 관련 기술 정리 |
+|:-------------|:---------------------------------------|:----|
+| 1091번        | [카드 섞기](./problems/1091)          |
+| 3678번        | [카탄의 개척자](./problems/3678)      |
+| 3425번        | [고스택](./problems/3425)            |
+| 1043번        | [거짓말](./problems/1043)            |
+| 14890번       | [경사로](./problems/14890)           |
 
-##### Header 5
+* * *
+## Week 4 [*2020.03.02. - 2020.03.08.*]
 
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
+| 번호          | 문제풀이                                | 코드 | 관련 기술 정리 |
+|:-------------|:---------------------------------------|:----|
+| 17779번        | [게리맨더링 2](./problems/17779)          |
+| 16236번        | [아기 상어](./problems/16236)      |
+| 5373번        | [큐빙](./problems/5373)            |
+| 17143번        | [낚시왕](./problems/17143)            |
+| 3678번       | [카탄의 개척자](./problems/3678)           |
 
-###### Header 6
+* * *
+## Week 5 [*2020.03.09. - 2020.03.15.*]
 
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
+| 번호          | 문제풀이                                     | 코드 | 관련 기술 정리 |
+|:-------------|:---------------------------------------|:----|
+| 9376번        | [탈옥](./problems/1091)            |
+| 1194번        | [달이 차오른다, 가자.](./problems/3678)         | |[유니온파인드](./technique/Disjointset), 이분탐색 |
+| 3197번        | [백조의 호수](./problems/3425)               |
+| 13460번        | [구슬 탈출 2](./problems/1043)              |
+|3055번|[탈출](./problems/3055)|[![github_icon](./github_icon.png)](https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3055.cpp)|[BFS](./technique/BFS), [시뮬레이션](./technique/Simulation)|
+|4179번|[불!](./problems/14890)|
 
 * * *
 
-### Here is an unordered list:
+## Week 6 [*2020.03.16. - 2020.03.22.*]
 
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
+| 번호          | 문제풀이                                     | 코드 | 관련 기술 정리 |
+|:-------------|:---------------------------------------|:----|
+| 1654번        | [랜선 자르기](./problems/1091)            |
+| 1520번        | [내리막 길](./problems/3678)         | | |
+| 12865번        | [평범한 배낭](./problems/3425)               |
+| 1126번        | [같은 탑](./problems/1043)              |
+|1006번|[습격자 초라기](./problems/3055)|||
+|16434번|[드래곤 앤 던전](./problems/14890)|
 
-### And an ordered list:
+* * *
 
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```

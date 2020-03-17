@@ -1,5 +1,8 @@
-title: Cayman theme
-description: Cayman is a clean, responsive theme for GitHub Pages.
+title: Problem Solving Blog
+description: 알고리즘 문제를 풀고 기록합니다. 관련된 기술을 정리하고 최적화 과정을 다룹니다.
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-cayman
+email: 'seonggyu.park.seoul@gmail.com'
+github_username: prodinic
+author: seonggyu.park.seoul@gmail.com

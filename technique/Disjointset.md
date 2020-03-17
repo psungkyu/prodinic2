@@ -59,7 +59,7 @@ description: 개념 설명 및 구현 방법
     }
 ```
 
-***weightedUnion*과 *collapsingFind*에 관한 분석 :** collapsing rule을 사용하는 것은 하나의 find를 수행하는 것보다 2배의 시간이 듭니다. 그러나 연속적인 find를 수행하는 것에 있어서 worst-case 시간을 줄이도록 도와줍니다. 
+***weightedUnion*과 *collapsingFind*에 관한 분석 :** collapsing rule을 사용하는 것은 하나의 find를 수행하는 것보다 2배의 시간이 듭니다. 그러나 연속적인 find를 수행하는 것에 있어서 worst-case 시간을 줄이도록 도와줍니다. 여기서 중요!
 
 
 

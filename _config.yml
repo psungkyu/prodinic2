@@ -6,11 +6,6 @@ description              : "알고리즘 문제를 풀고 기록합니다. 관�
 url                      : "https://prodinic.github.io"
 baseurl                  : # 서브 경로가 있는 경우 기재
 
-
-
-
-
-
 # Site Footer
 footer:
   links:

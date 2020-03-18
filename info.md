@@ -3,7 +3,7 @@ layout: default
 title: Seonggyu Park
 description: seonggyu.park.seoul@gmail.com
 ---
-[back](./)
+[back](../)
 ## Who am I 
 I am a software engineer who lives in Seoul, Korea. I like to read and run. I have few blogs related to computer science & engineering.
 

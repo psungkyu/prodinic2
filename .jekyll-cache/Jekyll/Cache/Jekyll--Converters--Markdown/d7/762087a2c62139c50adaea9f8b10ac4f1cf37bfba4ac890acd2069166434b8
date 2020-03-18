@@ -1,4 +1,4 @@
-I"� <h2 id="블로그의-목적">블로그의 목적</h2>
+I",*<h2 id="블로그의-목적">블로그의 목적</h2>
 <blockquote>
   <p>취업에 필요한 알고리즘 문제 풀이를 공부하고자 이 블로그를 개설하였습니다. 알고리즘 풀이와 관련된 코딩 기술을 정리하기로 합니다.</p>
 </blockquote>
@@ -29,13 +29,89 @@
 </code></pre></div></div>
 <hr />
 <h2 id="week-1-20200210---20200215">Week 1 [<em>2020.02.10. - 2020.02.15.</em>]</h2>
-<ol>
-  <li><a href="./problems/1091">1091번: 카드 섞기</a>
-1.</li>
-</ol>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">번호</th>
+      <th style="text-align: left">문제풀이</th>
+      <th style="text-align: left">코드</th>
+      <th>관련 기술 정리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1339번</td>
+      <td style="text-align: left"><a href="./problems/1339">단어 수학</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1987번</td>
+      <td style="text-align: left"><a href="./problems/1987">알파벳</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2731번</td>
+      <td style="text-align: left"><a href="./problems/2731">1379와 세제곱</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2549번</td>
+      <td style="text-align: left"><a href="./problems/2549">루빅의 사각형</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <hr />
 <h2 id="week-2-20200217---20200222">Week 2 [<em>2020.02.17. - 2020.02.22.</em>]</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">번호</th>
+      <th style="text-align: left">문제풀이</th>
+      <th style="text-align: left">코드</th>
+      <th>관련 기술 정리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">2933번</td>
+      <td style="text-align: left"><a href="./problems/2933">미네랄</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2931번</td>
+      <td style="text-align: left"><a href="./problems/2931">가스관</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">11952번</td>
+      <td style="text-align: left"><a href="./problems/11952">좀비</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">11724번</td>
+      <td style="text-align: left"><a href="./problems/11724">연결 요소의 개수</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">9328번</td>
+      <td style="text-align: left"><a href="./problems/9328">열쇠</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
 
 <hr />
 <h2 id="week-3-20200224---20200301">Week 3 [<em>2020.02.24. - 2020.03.01.</em>]</h2>
@@ -169,7 +245,7 @@
     <tr>
       <td style="text-align: left">3055번</td>
       <td style="text-align: left"><a href="./problems/3055">탈출</a></td>
-      <td style="text-align: left"><a href="https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3055.cpp"><img src="./github_icon.png" alt="github_icon" /></a></td>
+      <td style="text-align: left"><a href="https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3055.cpp"><img src="./img/github_icon.png" alt="github_icon" /></a></td>
       <td><a href="./technique/BFS">BFS</a>, <a href="./technique/Simulation">시뮬레이션</a></td>
     </tr>
     <tr>

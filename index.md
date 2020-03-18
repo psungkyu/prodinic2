@@ -32,11 +32,24 @@ int main() {
 ```
 * * *
 ## Week 1 [*2020.02.10. - 2020.02.15.*]
-1. [1091번: 카드 섞기](./problems/1091)
-1.
+
+| 번호          | 문제풀이                                | 코드 | 관련 기술 정리 |
+|:-------------|:---------------------------------------|:----|
+| 1339번        | [단어 수학](./problems/1339)          |
+| 1987번        | [알파벳](./problems/1987)      |
+| 2731번        | [1379와 세제곱](./problems/2731)            |
+| 2549번        | [루빅의 사각형](./problems/2549)            |
 
 * * *
 ## Week 2 [*2020.02.17. - 2020.02.22.*]
+
+| 번호          | 문제풀이                                | 코드 | 관련 기술 정리 |
+|:-------------|:---------------------------------------|:----|
+| 2933번        | [미네랄](./problems/2933)          |
+| 2931번        | [가스관](./problems/2931)      |
+| 11952번        | [좀비](./problems/11952)            |
+| 11724번        | [연결 요소의 개수](./problems/11724)            |
+| 9328번        | [열쇠](./problems/9328)            |
 
 * * *
 ## Week 3 [*2020.02.24. - 2020.03.01.*]
@@ -69,7 +82,7 @@ int main() {
 | 1194번        | [달이 차오른다, 가자.](./problems/3678)         | |[유니온파인드](./technique/Disjointset), 이분탐색, 연습 |
 | 3197번        | [백조의 호수](./problems/3425)               |
 | 13460번        | [구슬 탈출 2](./problems/1043)              |
-|3055번|[탈출](./problems/3055)|[![github_icon](./github_icon.png)](https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3055.cpp)|[BFS](./technique/BFS), [시뮬레이션](./technique/Simulation)|
+|3055번|[탈출](./problems/3055)|[![github_icon](./img/github_icon.png)](https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3055.cpp)|[BFS](./technique/BFS), [시뮬레이션](./technique/Simulation)|
 |4179번|[불!](./problems/14890)|
 
 * * *

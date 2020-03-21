@@ -1,0 +1,28 @@
+I"�<h3 id="설명">설명</h3>
+
+<h2 id="정의">정의</h2>
+<p>트리는 한 개 혹은 그 이상의 노드로 이루어진 유한의 집합이다.</p>
+<blockquote>
+  <ol>
+    <li>root라고 불리는 특정하게 정의되어 진 노드가 있다.</li>
+    <li>남은 노드들은 n &gt;= 0을 만족하는 T1, T2, … , Tn의 서로소 집합으로 나누어저 있고, 이 집합들의 원소들은 트리이다. T1, …, Tn은 루트의 서브트리라고 부른다.</li>
+  </ol>
+</blockquote>
+
+<h2 id="트리의-표현">트리의 표현</h2>
+<ol>
+  <li>degree : 노드의 서브트리 개수</li>
+  <li>leaf or terminal : degree가 0인 노드</li>
+  <li>nonterminal : degree가 0이 아닌 노드</li>
+  <li>children of node X : 노드 X의 서브트리의 roots</li>
+  <li>sibilings : 같은 parent를 가진 children</li>
+  <li>degree of a tree : 트리 속에서 노드들의 최대 degree</li>
+  <li>ancestors : root에서 특정 노드까지 가는 길 위에 있는 모든 노드들</li>
+  <li>level : 루트를 레벨 1로 하면서 정의되는 노드의 level</li>
+  <li>height or depth : 트리 속에 있는 어떤 노드들의 최대 레벨</li>
+</ol>
+
+<h3 id="알고리즘">알고리즘</h3>
+
+<h3 id="자료구조">자료구조</h3>
+:ET

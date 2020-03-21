@@ -1,0 +1,325 @@
+I".<h2 id="블로그의-목적">블로그의 목적</h2>
+<blockquote>
+  <p>취업에 필요한 알고리즘 문제 풀이를 공부하고자 이 블로그를 개설하였습니다. 알고리즘 풀이와 관련된 코딩 기술을 정리하기로 합니다.</p>
+</blockquote>
+
+<!-- ![Octocat](./ProblemSolving.png) -->
+<hr />
+<h2 id="작성된-코드는-아래의-특징을-지닙니다">작성된 코드는 아래의 특징을 지닙니다.</h2>
+<ul>
+  <li>대부분의 코드는 <strong>C++</strong>로 작성하였습니다.</li>
+  <li>많은 문자열을 처리해야 하는 경우, <strong>Python</strong>을 이용하여 문제를 풀었습니다.</li>
+  <li><strong>C++</strong>의 <strong>STL (<em>Standard Template Library</em>)</strong>을 사용하였습니다.</li>
+  <li>주로 사용된 라이브러리는 <strong><em>vector, queue</em></strong> 그리고 <strong><em>algorithm</em></strong> 등이 있습니다.</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This is default code written in C++ including specific libraries </span>
+<span class="cp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;queue&gt;
+#include &lt;algorithm&gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  
+  <span class="n">ios_base</span> <span class="o">::</span> <span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">cout</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"hello world!"</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<hr />
+
+<h2 id="인터뷰-내용-정리">인터뷰 내용 정리</h2>
+<p><a href="./Interview">바로가기</a></p>
+
+<hr />
+<h2 id="week-1-20200210---20200216">Week 1 [<em>2020.02.10. - 2020.02.16.</em>]</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">번호</th>
+      <th style="text-align: left">문제풀이</th>
+      <th style="text-align: left">코드</th>
+      <th>관련 기술 정리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1339번</td>
+      <td style="text-align: left"><a href="./problems/1339">단어 수학</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1987번</td>
+      <td style="text-align: left"><a href="./problems/1987">알파벳</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2731번</td>
+      <td style="text-align: left"><a href="./problems/2731">1379와 세제곱</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2549번</td>
+      <td style="text-align: left"><a href="./problems/2549">루빅의 사각형</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="week-2-20200217---20200223">Week 2 [<em>2020.02.17. - 2020.02.23.</em>]</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">번호</th>
+      <th style="text-align: left">문제풀이</th>
+      <th style="text-align: left">코드</th>
+      <th>관련 기술 정리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">2933번</td>
+      <td style="text-align: left"><a href="./problems/2933">미네랄</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2931번</td>
+      <td style="text-align: left"><a href="./problems/2931">가스관</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">11952번</td>
+      <td style="text-align: left"><a href="./problems/11952">좀비</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">11724번</td>
+      <td style="text-align: left"><a href="./problems/11724">연결 요소의 개수</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">9328번</td>
+      <td style="text-align: left"><a href="./problems/9328">열쇠</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="week-3-20200224---20200301">Week 3 [<em>2020.02.24. - 2020.03.01.</em>]</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">번호</th>
+      <th style="text-align: left">문제풀이</th>
+      <th style="text-align: left">코드</th>
+      <th>관련 기술 정리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1091번</td>
+      <td style="text-align: left"><a href="./problems/1091">카드 섞기</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3678번</td>
+      <td style="text-align: left"><a href="./problems/3678">카탄의 개척자</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3425번</td>
+      <td style="text-align: left"><a href="./problems/3425">고스택</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1043번</td>
+      <td style="text-align: left"><a href="./problems/1043">거짓말</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">14890번</td>
+      <td style="text-align: left"><a href="./problems/14890">경사로</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="week-4-20200302---20200308">Week 4 [<em>2020.03.02. - 2020.03.08.</em>]</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">번호</th>
+      <th style="text-align: left">문제풀이</th>
+      <th style="text-align: left">코드</th>
+      <th>관련 기술 정리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">17779번</td>
+      <td style="text-align: left"><a href="./problems/17779">게리맨더링 2</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">16236번</td>
+      <td style="text-align: left"><a href="./problems/16236">아기 상어</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5373번</td>
+      <td style="text-align: left"><a href="./problems/5373">큐빙</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">17143번</td>
+      <td style="text-align: left"><a href="./problems/17143">낚시왕</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3678번</td>
+      <td style="text-align: left"><a href="./problems/3678">카탄의 개척자</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="week-5-20200309---20200315">Week 5 [<em>2020.03.09. - 2020.03.15.</em>]</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">번호</th>
+      <th style="text-align: left">문제풀이</th>
+      <th style="text-align: left">코드</th>
+      <th>관련 기술 정리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">9376번</td>
+      <td style="text-align: left"><a href="./problems/1091">탈옥</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1194번</td>
+      <td style="text-align: left"><a href="./problems/3678">달이 차오른다, 가자.</a></td>
+      <td style="text-align: left"> </td>
+      <td><a href="./technique/Disjointset">유니온파인드</a>, 이분탐색, 연습</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3197번</td>
+      <td style="text-align: left"><a href="./problems/3197">백조의 호수</a></td>
+      <td style="text-align: left"><a href="https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3197.cpp"><img src="./img/github_icon.png" alt="github_icon" /></a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">13460번</td>
+      <td style="text-align: left"><a href="./problems/1043">구슬 탈출 2</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3055번</td>
+      <td style="text-align: left"><a href="./problems/3055">탈출</a></td>
+      <td style="text-align: left"><a href="https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3055.cpp"><img src="./img/github_icon.png" alt="github_icon" /></a></td>
+      <td><a href="./technique/BFS">BFS</a>, <a href="./technique/Simulation">시뮬레이션</a></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4179번</td>
+      <td style="text-align: left"><a href="./problems/14890">불!</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="week-6-20200316---20200322">Week 6 [<em>2020.03.16. - 2020.03.22.</em>]</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">번호</th>
+      <th style="text-align: left">문제풀이</th>
+      <th style="text-align: left">코드</th>
+      <th>관련 기술 정리</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">1654번</td>
+      <td style="text-align: left"><a href="./problems/1654">랜선 자르기</a></td>
+      <td style="text-align: left"><a href="https://github.com/prodinic/algorithm_solving/blob/master/BOJ/1654.cpp"><img src="./img/github_icon.png" alt="github_icon" /></a></td>
+      <td>이분탐색</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1520번</td>
+      <td style="text-align: left"><a href="./problems/3678">내리막 길</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">12865번</td>
+      <td style="text-align: left"><a href="./problems/3425">평범한 배낭</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1126번</td>
+      <td style="text-align: left"><a href="./problems/1043">같은 탑</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1006번</td>
+      <td style="text-align: left"><a href="./problems/3055">습격자 초라기</a></td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">16434번</td>
+      <td style="text-align: left"><a href="./problems/16434">드래곤 앤 던전</a></td>
+      <td style="text-align: left"><a href="https://github.com/prodinic/algorithm_solving/blob/master/BOJ/16434.cpp"><img src="./img/github_icon.png" alt="github_icon" /></a></td>
+      <td>이분탐색</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+:ET

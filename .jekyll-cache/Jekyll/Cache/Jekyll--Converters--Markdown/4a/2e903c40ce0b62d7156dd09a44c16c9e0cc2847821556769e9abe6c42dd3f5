@@ -1,0 +1,20 @@
+I"�<h3 id="자료-구조data-structure">자료 구조(Data Structure)</h3>
+
+<ol>
+  <li>트라이(p사) - 삽입과 삭제 함수의 구현</li>
+  <li>바이너리 서치 트리(s사) - 삽입 과정과 시간복잡도를 중심으로</li>
+  <li>유니온 파인드</li>
+  <li>트리</li>
+  <li>BFS와 DFS를 의사코드로 구현하라</li>
+  <li>Expression Tree</li>
+</ol>
+
+<h3 id="소프트웨어-공학software-engineering">소프트웨어 공학(Software Engineering)</h3>
+
+<ol>
+  <li>OOP에 대하여 설명하라.(m사)</li>
+  <li>Git에서 merge와 rebase의 차이점에 대해 논하라.</li>
+</ol>
+
+<h3 id="운영-체제operating-system">운영 체제(Operating System)</h3>
+:ET

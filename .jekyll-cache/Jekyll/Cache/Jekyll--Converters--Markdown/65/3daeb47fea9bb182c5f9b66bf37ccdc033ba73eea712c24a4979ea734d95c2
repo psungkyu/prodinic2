@@ -1,0 +1,97 @@
+I"�.<p><a href="../../">뒤로 가기</a></p>
+<h2 id="문제해설">문제해설</h2>
+
+<p><a href="https://www.acmicpc.net/problem/16434">문제</a>의 정의에 의하면 <strong>캐릭터가 모든 방을 돌 수 있는 최소의 HP를 구하는 것</strong>이 목표입니다.</p>
+
+<blockquote>
+  <p>제한 조건</p>
+  <ul>
+    <li>캐릭터의 생명력은 1이상 이어야 한다.</li>
+    <li>캐릭터의 생명력은 최소 HP 이상으로 증가할 수 없다. 포션을 먹어도 그 이상으로 증가할 수 없다.</li>
+    <li>캐릭터가 몬스터에게 마지막 타격을 가하는 순간, 몬스터는 캐릭터에게 데미지를 줄 수 없다. 다시 말해, <strong><em>캐릭터가 n 번째 타격에 몹을 죽였을 때, 몹은 캐릭터에 n-1번의 타격을 준다.</em></strong></li>
+  </ul>
+</blockquote>
+
+<h2 id="아이디어">아이디어</h2>
+
+<p>이분 탐색을 이용하여 최소 HP를 구합니다. 최대 HP는 long long int의 최대값으로 했고, 이를 H라고 했을 때 <strong><em>시간 복잡도는 O(lgH)</em></strong>입니다.</p>
+
+<h2 id="알고리즘">알고리즘</h2>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+#include &lt;limits.h&gt;
+#define ll long long int
+#define MAX_NUM 123457
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span> 
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+	<span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+	<span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">cout</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">struct</span> <span class="n">info</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">h</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="n">info</span> <span class="n">v</span><span class="p">[</span><span class="n">MAX_NUM</span><span class="p">];</span>
+
+    <span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">H</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">h</span><span class="p">;</span>
+        <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">ll</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_right</span> <span class="o">=</span> <span class="n">LLONG_MAX</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">attack</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">flag</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">_left</span> <span class="o">&lt;=</span> <span class="n">_right</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// 이분 탐색 합니다.</span>
+    
+        <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">_left</span> <span class="o">+</span> <span class="n">_right</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">mid</span><span class="p">,</span> <span class="n">attack</span> <span class="o">=</span> <span class="n">H</span><span class="p">;</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">t</span><span class="p">;</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">a</span><span class="p">;</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">h</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">t</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// 몹을 상대합니다.</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">h</span> <span class="o">%</span> <span class="n">attack</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 공격했을 때, 나머지가 0 입니다.</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">total</span> <span class="o">&lt;=</span> <span class="p">((</span><span class="n">h</span> <span class="o">/</span> <span class="n">attack</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 내가 몹보다 먼저 죽을 경우, 최소 HP를 늘리고 다시 이분탐색 합니다.</span>
+                        <span class="n">_left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+                        <span class="n">flag</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span> <span class="n">total</span> <span class="o">-=</span> <span class="p">((</span><span class="n">h</span> <span class="o">/</span> <span class="n">attack</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span><span class="p">;</span>   <span class="c1">// 남은 채력을 저장합니다.</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="p">{</span>  <span class="c1">// 공격했을 때, 나머지가 0이 아닙니다.</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">total</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">h</span> <span class="o">/</span> <span class="n">attack</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// 내가 몹보다 먼저 죽을 경우, 최소 HP를 늘리고 다시 이분탐색 합니다.</span>
+                         <span class="n">_left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+                        <span class="n">flag</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+                    <span class="k">else</span> <span class="n">total</span> <span class="o">-=</span> <span class="p">(</span><span class="n">h</span> <span class="o">/</span> <span class="n">attack</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span><span class="p">;</span> <span class="c1">// 남은 체력을 저장합니다.</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>  <span class="c1">// potion</span>
+                <span class="n">attack</span> <span class="o">+=</span> <span class="n">a</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">total</span> <span class="o">+</span> <span class="n">h</span> <span class="o">&gt;</span> <span class="n">mid</span><span class="p">)</span> <span class="n">total</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+                <span class="k">else</span> <span class="n">total</span> <span class="o">+=</span> <span class="n">h</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">flag</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 모든 방을 돌고 난 후, 최소 HP를 줄이고 다시 이분탐색 합니다.</span>
+            <span class="n">_right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">answer</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">answer</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><a href="../../">목록</a></p>
+:ET

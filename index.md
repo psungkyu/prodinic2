@@ -16,7 +16,7 @@ description: 알고리즘 문제를 풀고 기록합니다. 관련된 기술을 
 * 주로 사용된 라이브러리는 ***vector, queue*** 그리고 ***algorithm*** 등이 있습니다.
 
 ```c++
-// This example written in C++ has some libraries 
+// This is default code written in C++ including specific libraries 
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -25,13 +25,23 @@ description: 알고리즘 문제를 풀고 기록합니다. 관련된 기술을 
 using namespace std;
 
 int main() {
+  
+  ios_base :: sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
 
-  cout << "hello world!" << endl;
+  cout << "hello world!" << "\n";
+  
   return 0;
 }
 ```
 * * *
-## Week 1 [*2020.02.10. - 2020.02.15.*]
+
+## 인터뷰 내용 정리
+[바로 가기](./Interview)
+
+* * *
+## Week 1 [*2020.02.10. - 2020.02.16.*]
 
 | 번호          | 문제풀이                                | 코드 | 관련 기술 정리 |
 |:-------------|:---------------------------------------|:----|
@@ -41,7 +51,7 @@ int main() {
 | 2549번        | [루빅의 사각형](./problems/2549)            |
 
 * * *
-## Week 2 [*2020.02.17. - 2020.02.22.*]
+## Week 2 [*2020.02.17. - 2020.02.23.*]
 
 | 번호          | 문제풀이                                | 코드 | 관련 기술 정리 |
 |:-------------|:---------------------------------------|:----|
@@ -80,7 +90,7 @@ int main() {
 |:-------------|:---------------------------------------|:----|
 | 9376번        | [탈옥](./problems/1091)            |
 | 1194번        | [달이 차오른다, 가자.](./problems/3678)         | |[유니온파인드](./technique/Disjointset), 이분탐색, 연습 |
-| 3197번        | [백조의 호수](./problems/3425)               |
+| 3197번        | [백조의 호수](./problems/3197)               |[![github_icon](./img/github_icon.png)](https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3197.cpp)| |
 | 13460번        | [구슬 탈출 2](./problems/1043)              |
 |3055번|[탈출](./problems/3055)|[![github_icon](./img/github_icon.png)](https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3055.cpp)|[BFS](./technique/BFS), [시뮬레이션](./technique/Simulation)|
 |4179번|[불!](./problems/14890)|
@@ -91,12 +101,12 @@ int main() {
 
 | 번호          | 문제풀이                                     | 코드 | 관련 기술 정리 |
 |:-------------|:---------------------------------------|:----|
-| 1654번        | [랜선 자르기](./problems/1091)            |
+| 1654번        | [랜선 자르기](./problems/1654)            |[![github_icon](./img/github_icon.png)](https://github.com/prodinic/algorithm_solving/blob/master/BOJ/1654.cpp)|이분탐색|
 | 1520번        | [내리막 길](./problems/3678)         | | |
 | 12865번        | [평범한 배낭](./problems/3425)               |
 | 1126번        | [같은 탑](./problems/1043)              |
 |1006번|[습격자 초라기](./problems/3055)|||
-|16434번|[드래곤 앤 던전](./problems/14890)|
+|16434번|[드래곤 앤 던전](./problems/16434)|[![github_icon](./img/github_icon.png)](https://github.com/prodinic/algorithm_solving/blob/master/BOJ/16434.cpp)|이분탐색|
 
 * * *
 

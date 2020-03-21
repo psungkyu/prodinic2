@@ -16,7 +16,7 @@
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Problem Solving Blog" />
 <script type="application/ld+json">
-{"@type":"WebSite","url":"http://localhost:4000/","headline":"Problem Solving Blog","name":"Problem Solving Blog","description":"알고리즘 문제를 풀고 기록합니다. 관련된 기술을 정리하고 최적화 과정을 다룹니다.","@context":"https://schema.org"}</script>
+{"@type":"WebSite","headline":"Problem Solving Blog","url":"http://localhost:4000/","name":"Problem Solving Blog","description":"알고리즘 문제를 풀고 기록합니다. 관련된 기술을 정리하고 최적화 과정을 다룹니다.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,8 +31,8 @@
       <h1 class="project-name">Problem Solving Blog</h1>
       <h2 class="project-tagline">알고리즘 문제를 풀고 기록합니다. 관련된 기술을 정리하고 최적화 과정을 다룹니다.</h2>
       
-      <a href="../info" class="btn">Resume</a>
-      <a href="../info" class="btn">Github</a>
+      <a href="https://www.linkedin.com/in/searchingstar/" class="btn">LinkedIn</a>
+      <a href="https://github.com/prodinic" class="btn">Github</a>
       <!--  -->
     </header>
 
@@ -52,7 +52,7 @@
   <li>주로 사용된 라이브러리는 <strong><em>vector, queue</em></strong> 그리고 <strong><em>algorithm</em></strong> 등이 있습니다.</li>
 </ul>
 
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This example written in C++ has some libraries </span>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// This is default code written in C++ including specific libraries </span>
 <span class="cp">#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;queue&gt;
@@ -61,13 +61,23 @@
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  
+  <span class="n">ios_base</span> <span class="o">::</span> <span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+  <span class="n">cout</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
 
-  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"hello world!"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"hello world!"</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+  
   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 <hr />
-<h2 id="week-1-20200210---20200215">Week 1 [<em>2020.02.10. - 2020.02.15.</em>]</h2>
+
+<h2 id="인터뷰-내용-정리">인터뷰 내용 정리</h2>
+<p><a href="./Interview">바로 가기</a></p>
+
+<hr />
+<h2 id="week-1-20200210---20200216">Week 1 [<em>2020.02.10. - 2020.02.16.</em>]</h2>
 
 <table>
   <thead>
@@ -107,7 +117,7 @@
 </table>
 
 <hr />
-<h2 id="week-2-20200217---20200222">Week 2 [<em>2020.02.17. - 2020.02.22.</em>]</h2>
+<h2 id="week-2-20200217---20200223">Week 2 [<em>2020.02.17. - 2020.02.23.</em>]</h2>
 
 <table>
   <thead>
@@ -271,8 +281,8 @@
     </tr>
     <tr>
       <td style="text-align: left">3197번</td>
-      <td style="text-align: left"><a href="./problems/3425">백조의 호수</a></td>
-      <td style="text-align: left"> </td>
+      <td style="text-align: left"><a href="./problems/3197">백조의 호수</a></td>
+      <td style="text-align: left"><a href="https://github.com/prodinic/algorithm_solving/blob/master/BOJ/3197.cpp"><img src="./img/github_icon.png" alt="github_icon" /></a></td>
       <td> </td>
     </tr>
     <tr>
@@ -312,9 +322,9 @@
   <tbody>
     <tr>
       <td style="text-align: left">1654번</td>
-      <td style="text-align: left"><a href="./problems/1091">랜선 자르기</a></td>
-      <td style="text-align: left"> </td>
-      <td> </td>
+      <td style="text-align: left"><a href="./problems/1654">랜선 자르기</a></td>
+      <td style="text-align: left"><a href="https://github.com/prodinic/algorithm_solving/blob/master/BOJ/1654.cpp"><img src="./img/github_icon.png" alt="github_icon" /></a></td>
+      <td>이분탐색</td>
     </tr>
     <tr>
       <td style="text-align: left">1520번</td>
@@ -342,9 +352,9 @@
     </tr>
     <tr>
       <td style="text-align: left">16434번</td>
-      <td style="text-align: left"><a href="./problems/14890">드래곤 앤 던전</a></td>
-      <td style="text-align: left"> </td>
-      <td> </td>
+      <td style="text-align: left"><a href="./problems/16434">드래곤 앤 던전</a></td>
+      <td style="text-align: left"><a href="https://github.com/prodinic/algorithm_solving/blob/master/BOJ/16434.cpp"><img src="./img/github_icon.png" alt="github_icon" /></a></td>
+      <td>이분탐색</td>
     </tr>
   </tbody>
 </table>
